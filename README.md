@@ -1,5 +1,27 @@
 # sidekiq-job-php
-Sidekiq job pusher for PHP
+
+[![Build Status](https://scrutinizer-ci.com/g/spinx/sidekiq-job-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/spinx/sidekiq-job-php/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spinx/sidekiq-job-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spinx/sidekiq-job-php/?branch=master)
+
+Push and schedule jobs to Sidekiq from PHP
+
+## Installation
+
+The recommended way to install this library is through
+[Composer](http://getcomposer.org/). Require the `spinx/sidekiq-job-php` package
+into your `composer.json` file:
+
+```json
+{
+    "require": {
+        "spinx/sidekiq-job-php": "*"
+    }
+}
+```
+
+**Inportant:** you should browse the
+[`spinx/sidekiq-job-php`](https://packagist.org/packages/spinx/sidekiq-job-php)
+page to choose a stable version to use, avoid the `*` meta constraint.
 
 ## Usage
 
