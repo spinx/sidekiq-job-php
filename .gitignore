@@ -9,3 +9,5 @@
 
 # Project specific
 vendor
+bin
+src
