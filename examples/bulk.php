@@ -9,9 +9,9 @@ $client = new \SidekiqJob\Client($redis);
 
 // define jobs with args
 $jobs = [
-    [ 'class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, 12]],
-    [ 'class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, null]],
-    [ 'class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], false, 45]]
+    ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, 12]],
+    ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, null]],
+    ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], false, 45]]
 ];
 
 // push jobs to a different queue
