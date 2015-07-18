@@ -1,0 +1,23 @@
+{
+  "name": "spinx/sidekiq-job-php",
+  "description": "Sidekiq job pusher for PHP",
+  "keywords" : [
+    "sidekiq",
+    "resque",
+    "redis",
+    "worker",
+    "queue",
+    "processing"
+  ],
+  "type": "library",
+  "require": {
+    "predis/predis": "^1.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Damjan Znidarsic",
+      "email": "damjan@znidarsic.me"
+    }
+  ]
+}
