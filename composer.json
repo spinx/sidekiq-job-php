@@ -23,5 +23,8 @@
   ],
   "autoload": {
     "psr-4": {"SidekiqJob\\": "lib/"}
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^2.7"
   }
 }
