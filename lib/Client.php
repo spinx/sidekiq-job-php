@@ -24,7 +24,7 @@ class Client
     protected $idGenerator;
 
     /**
-     * Sidekiq job push
+     * Sidekiq job pusher init
      *
      * @param \Predis\Client $redis
      * @param string         $namespace
@@ -56,7 +56,7 @@ class Client
     }
 
     /**
-     * Push a job
+     * Schedule a job at a certain time
      *
      * @param float  $doAt
      * @param string $class
