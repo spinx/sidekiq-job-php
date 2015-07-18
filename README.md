@@ -3,13 +3,15 @@ Sidekiq job pusher for PHP
 
 ## Usage
 
-```
+```php
 $redis = new Predis\Client('tcp://127.0.0.1:6379');
 
 $client = new \SidekiqJob\Client($redis);
 
-$client->push('ProcessImage', $args);
+$client->push('ProcessImage', ['argument1']);
 ```
+
+More examples [here](https://github.com/spinx/sidekiq-job-php/tree/master/examples). 
 
 ## Misc
 

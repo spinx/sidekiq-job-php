@@ -34,7 +34,7 @@ class Client
     public function __construct(\Predis\Client $redis, $namespace = null, $serializer = null, $idGenerator = null)
     {
         $this->redis = $redis;
-        $this->namespace = ($namespace === null) ? '' : $namespace.':';
+        $this->namespace = ($namespace === null) ? '' : (string) $namespace;
         $this->serializer = ($serializer === null) ? new Serializer() : $serializer;
         $this->idGenerator = ($idGenerator === null) ? new IdGenerator() : $idGenerator;
     }
@@ -119,7 +119,7 @@ class Client
      */
     private function atomicPush($jobId, $class, $args = [], $queue = self::QUEUE, $doAt = null)
     {
-        if(array_values($args) !== $args){
+        if (array_values($args) !== $args) {
             throw new Exception('Associative arrays in job args are not allowed');
         }
 
@@ -130,10 +130,19 @@ class Client
         $job = $this->serializer->serialize($jobId, $class, $args);
 
         if ($doAt === null) {
-            $this->redis->sadd('queues', $queue);
-            $this->redis->lpush(sprintf('%squeue:%s', $this->namespace, $queue), $job);
+            $this->redis->sadd($this->name('queues'), $queue);
+            $this->redis->lpush($this->name('queue', $queue), $job);
         } else {
-            $this->redis->zadd(sprintf('%sschedule', $this->namespace), [$job => $doAt]);
+            $this->redis->zadd($this->name('schedule'), [$job => $doAt]);
         }
+    }
+
+    /**
+     * @param string ...$key
+     * @return string
+     */
+    private function name(...$key)
+    {
+        return implode(':', array_filter(array_merge([$this->namespace], func_get_args()), 'strlen'));
     }
 }
