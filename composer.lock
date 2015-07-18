@@ -113,52 +113,6 @@
             "time": "2015-06-14 21:17:01"
         },
         {
-            "name": "escapestudios/symfony2-coding-standard",
-            "version": "2.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/escapestudios/Symfony2-coding-standard.git",
-                "reference": "d4e4794d5cbdfb8945f456d96c4ab133a7f807f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/escapestudios/Symfony2-coding-standard/zipball/d4e4794d5cbdfb8945f456d96c4ab133a7f807f6",
-                "reference": "d4e4794d5cbdfb8945f456d96c4ab133a7f807f6",
-                "shasum": ""
-            },
-            "require": {
-                "squizlabs/php_codesniffer": "~2.0"
-            },
-            "type": "coding-standard",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Joos",
-                    "email": "david.joos@escapestudios.com"
-                },
-                {
-                    "name": "Community contributors",
-                    "homepage": "https://github.com/escapestudios/Symfony2-coding-standard/graphs/contributors"
-                }
-            ],
-            "description": "CodeSniffer ruleset for the Symfony2 coding standard",
-            "homepage": "https://github.com/escapestudios/Symfony2-coding-standard",
-            "keywords": [
-                "Coding Standard",
-                "Symfony2",
-                "phpcs"
-            ],
-            "time": "2015-06-18 08:56:49"
-        },
-        {
             "name": "phpdocumentor/reflection-docblock",
             "version": "2.0.4",
             "source": {
