@@ -2,6 +2,6 @@
 
 namespace SidekiqJob;
 
-class Exception extends \Exception{
+class Exception extends \Exception {
 
 }
