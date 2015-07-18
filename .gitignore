@@ -6,3 +6,6 @@
 
 # IDEs
 .idea
+
+# Project specific
+vendor
