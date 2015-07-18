@@ -18,7 +18,7 @@ More examples [here](https://github.com/spinx/sidekiq-job-php/tree/master/exampl
 ### Requirements
  - PHP 5.6 - would be entirely possible to support 5.3 but you really should upgrade!
 
-### TODO
+### Todo
 - Monolog support
 - Statsd or similar support
 
@@ -26,5 +26,5 @@ More examples [here](https://github.com/spinx/sidekiq-job-php/tree/master/exampl
 [Symfony2](https://github.com/escapestudios/Symfony2-coding-standard).
 
 ### License
-MIT. Use it as you wish
+MIT. Use it as you wish.
 

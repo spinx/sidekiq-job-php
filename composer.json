@@ -1,6 +1,6 @@
 {
   "name": "spinx/sidekiq-job-php",
-  "description": "Sidekiq job pusher for PHP",
+  "description": "Push and schedule jobs to Sidekiq from PHP",
   "keywords" : [
     "sidekiq",
     "resque",
