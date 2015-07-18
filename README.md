@@ -19,9 +19,7 @@ into your `composer.json` file:
 }
 ```
 
-**Inportant:** you should browse the
-[`spinx/sidekiq-job-php`](https://packagist.org/packages/spinx/sidekiq-job-php)
-page to choose a stable version to use, avoid the `*` meta constraint.
+**Important:** you should browse [`spinx/sidekiq-job-php`](https://packagist.org/packages/spinx/sidekiq-job-php) to choose the latest version, avoid the `*` meta constraint.
 
 ## Usage
 
