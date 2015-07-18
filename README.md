@@ -15,6 +15,10 @@ More examples [here](https://github.com/spinx/sidekiq-job-php/tree/master/exampl
 
 ## Misc
 
+### TODO
+- Monolog support
+- Statsd or similar support
+
 ### Standards
 [Symfony2](https://github.com/escapestudios/Symfony2-coding-standard).
 
