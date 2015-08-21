@@ -1,5 +1,8 @@
 <?php
 include __DIR__.'/../vendor/autoload.php';
+function _print($id, $retry){
+    var_dump(sprintf('Pushed job with id %s and retry:%d', $id, $retry));
+}
 
 // connect to database 0 on 127.0.0.1
 $redis = new Predis\Client('tcp://127.0.0.1:6379/0');
@@ -14,6 +17,8 @@ $args = [
     70
 ];
 
-$id = $client->push('ProcessImage', $args);
+$id = $client->push('ProcessImage', $args, true);
+_print($id, true);
 
-var_dump(sprintf('Pushed job with id %s', $id));
+$id = $client->push('ProcessImage', $args, false);
+_print($id, false);

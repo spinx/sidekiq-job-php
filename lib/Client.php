@@ -45,12 +45,13 @@ class Client
      * @param string $class
      * @param array  $args
      * @param string $queue
+     * @param bool   $retry
      * @return string
      */
-    public function push($class, $args = [], $queue = self::QUEUE)
+    public function push($class, $args = [], $retry = true, $queue = self::QUEUE)
     {
         $jobId = $this->idGenerator->generate();
-        $this->atomicPush($jobId, $class, $args, $queue);
+        $this->atomicPush($jobId, $class, $args, $queue, $retry);
 
         return $jobId;
     }
@@ -62,12 +63,13 @@ class Client
      * @param string $class
      * @param array  $args
      * @param string $queue
+     * @param bool   $retry
      * @return string
      */
-    public function schedule($doAt, $class, $args = [], $queue = self::QUEUE)
+    public function schedule($doAt, $class, $args = [], $retry = true, $queue = self::QUEUE)
     {
         $jobId = $this->idGenerator->generate();
-        $this->atomicPush($jobId, $class, $args, $queue, $doAt);
+        $this->atomicPush($jobId, $class, $args, $queue, $retry, $doAt);
 
         return $jobId;
     }
@@ -79,7 +81,9 @@ class Client
      * $jobs = [
      *  [
      *      'class' => 'SomeClass',
-     *      'args' => array()
+     *      'args' => array(),
+     *      'retry' => false,
+     *      'at' => microtime(true)
      *  ]
      * ];
      *
@@ -99,9 +103,12 @@ class Client
                 throw new Exception('pushBulk: each job needs args');
             }
 
+            $retry = isset($job['retry']) ? $job['retry'] : true;
+            $doAt = isset($job['at']) ? $job['at'] : null;
+
             $jobId = $this->idGenerator->generate();
             array_push($ids, $jobId);
-            $this->atomicPush($jobId, $job['class'], $job['args'], $queue);
+            $this->atomicPush($jobId, $job['class'], $job['args'], $queue, $retry, $doAt);
         }
 
         return $ids;
@@ -114,10 +121,11 @@ class Client
      * @param string     $class
      * @param array      $args
      * @param string     $queue
+     * @param bool       $retry
      * @param float|null $doAt
      * @throws exception Exception
      */
-    private function atomicPush($jobId, $class, $args = [], $queue = self::QUEUE, $doAt = null)
+    private function atomicPush($jobId, $class, $args = [], $queue = self::QUEUE, $retry = true, $doAt = null)
     {
         if (array_values($args) !== $args) {
             throw new Exception('Associative arrays in job args are not allowed');
@@ -127,7 +135,7 @@ class Client
             throw new Exception('at argument needs to be in a unix epoch format. Use microtime(true).');
         }
 
-        $job = $this->serializer->serialize($jobId, $class, $args);
+        $job = $this->serializer->serialize($jobId, $class, $args, $retry);
 
         if ($doAt === null) {
             $this->redis->sadd($this->name('queues'), $queue);
@@ -141,7 +149,7 @@ class Client
      * @param string ...$key
      * @return string
      */
-    private function name(...$key)
+    private function name()
     {
         return implode(':', array_filter(array_merge([$this->namespace], func_get_args()), 'strlen'));
     }

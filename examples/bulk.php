@@ -11,7 +11,7 @@ $client = new \SidekiqJob\Client($redis);
 $jobs = [
     ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, 12]],
     ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], true, null]],
-    ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg'], false, 45]]
+    ['class' => 'ProcessImage', 'args' => [['url' => 'http://i.imgur.com/hlAsa4k.jpg']], 'at' => microtime(true)+60*6, 'retry' => false]
 ];
 
 // push jobs to a different queue

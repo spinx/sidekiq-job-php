@@ -17,20 +17,14 @@ class Serializer
      * @return string
      * @throws exception Exception
      */
-    public function serialize($jobId, $class, $args = [])
+    public function serialize($jobId, $class, $args = [], $retry = true)
     {
         $class = is_object($class) ? get_class($class) : $class;
-        $retry = (isset($args['retry']) && is_bool($args['retry'])) ? $args['retry'] : true;
-        $createdAt = isset($args['created_at']) ? $args['created_at'] : microtime(true);
-
-        if (!is_float($createdAt) && is_string($createdAt)) {
-            throw new Exception('created_at argument needs to be in a unix epoch format. Use microtime(true).');
-        }
 
         $data = [
             'class' => $class,
             'jid' => $jobId,
-            'created_at' => $createdAt,
+            'created_at' => microtime(true),
             'enqueued_at' => microtime(true),
             'args' => $args,
             'retry' => $retry,
