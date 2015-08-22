@@ -10,6 +10,5 @@
 # Project specific
 vendor
 bin
-src
 coverage
 coverage.xml

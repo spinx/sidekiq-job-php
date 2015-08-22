@@ -1,3 +1,10 @@
+suites:
+    default:
+        src_path: src
+        spec_prefix: spec
+        namespace: SidekiqJob\
+        psr4_prefix:
+
 extensions:
     - PhpSpec\Extension\CodeCoverageExtension
 

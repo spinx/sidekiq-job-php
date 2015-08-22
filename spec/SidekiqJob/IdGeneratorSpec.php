@@ -27,6 +27,20 @@ class IdGeneratorSpec extends ObjectBehavior
         $this->generate()->shouldBeAlphanumeric();
     }
 
+    /**
+     * Naive way of testing uniqueness, I know
+     */
+    function it_should_be_unique(){
+        $ids = [];
+        $iterations = 100;
+
+        for($i=0; $i < $iterations; $i++){
+            $ids[] = $this->getWrappedObject()->generate();
+        }
+
+        return (count(array_values($ids)) === $iterations);
+    }
+
 
     public function getMatchers()
     {

@@ -24,10 +24,14 @@
     "require-dev": {
         "symfony/var-dumper": "^2.7",
         "phpspec/phpspec": "^2.2",
-        "henrikbjorn/phpspec-code-coverage": "^1.0"
+        "henrikbjorn/phpspec-code-coverage": "^1.0",
+        "knplabs/phpspec-welldone-extension": "dev-master",
+        "phpspec/nyan-formatters": "^1.0",
+        "ciaranmcnulty/phpspec-typehintedmethods": "^1.01",
+        "m6web/redis-mock": "^2.2"
     },
     "autoload": {
-        "psr-4": {"SidekiqJob\\": "lib/"}
+        "psr-4": {"SidekiqJob\\": "src/"}
     },
     "config": {
         "bin-dir": "bin"

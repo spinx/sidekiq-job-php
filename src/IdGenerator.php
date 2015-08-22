@@ -11,7 +11,7 @@ class IdGenerator
     /**
      * Generates 12 byte random id
      *
-     * @see https://github.com/mperham/sidekiq/blob/master/lib/sidekiq/client.rb#L222
+     * @see https://github.com/mperham/sidekiq/blob/master/lib/sidekiq/client.rb#L218
      * @return number
      */
     public function generate()

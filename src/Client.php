@@ -15,7 +15,7 @@ class Client
     protected $namespace;
 
     /** @var \Predis\Client */
-    protected $redis;
+    public $redis;
 
     /** @var Serializer */
     protected $serializer;
@@ -44,8 +44,8 @@ class Client
      *
      * @param string $class
      * @param array  $args
-     * @param string $queue
      * @param bool   $retry
+     * @param string $queue
      * @return string
      */
     public function push($class, $args = [], $retry = true, $queue = self::QUEUE)
@@ -62,8 +62,8 @@ class Client
      * @param float  $doAt
      * @param string $class
      * @param array  $args
-     * @param string $queue
      * @param bool   $retry
+     * @param string $queue
      * @return string
      */
     public function schedule($doAt, $class, $args = [], $retry = true, $queue = self::QUEUE)
@@ -152,5 +152,13 @@ class Client
     private function name()
     {
         return implode(':', array_filter(array_merge([$this->namespace], func_get_args()), 'strlen'));
+    }
+
+    /**
+     * @return \Predis\Client
+     */
+    public function getRedis()
+    {
+        return $this->redis;
     }
 }
