@@ -36,7 +36,7 @@ More examples [here](https://github.com/spinx/sidekiq-job-php/tree/master/exampl
 ## Misc
 
 ### Requirements
- - PHP 5.6 - would be entirely possible to support 5.3 but you really should upgrade!
+ - PHP >=5.4
 
 ### Todo
 - Monolog support
