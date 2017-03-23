@@ -6,7 +6,7 @@ suites:
         psr4_prefix:
 
 extensions:
-    - PhpSpec\Extension\CodeCoverageExtension
+    #- PhpSpec\Extension\CodeCoverageExtension
 
 code_coverage:
     format:

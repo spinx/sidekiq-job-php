@@ -17,7 +17,7 @@ class Serializer
      * @return string
      * @throws exception Exception
      */
-    public function serialize($jobId, $class, $args = [], $retry = true)
+    public function serialize($jobId, $class, $args = [], $retry = true, $bid = null)
     {
         $class = is_object($class) ? get_class($class) : $class;
 
@@ -29,6 +29,10 @@ class Serializer
             'args' => $args,
             'retry' => $retry,
         ];
+
+        if ($bid !== null){
+            $data['bid'] = $bid;
+        }
 
         return json_encode($data);
     }

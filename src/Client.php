@@ -37,6 +37,7 @@ class Client
         $this->namespace = ($namespace === null) ? '' : (string) $namespace;
         $this->serializer = ($serializer === null) ? new Serializer() : $serializer;
         $this->idGenerator = ($idGenerator === null) ? new IdGenerator() : $idGenerator;
+        $this->idGeneratorBatch = ($idGenerator === null) ? new IdGenerator(10) : $idGenerator;
     }
 
     /**
@@ -112,6 +113,11 @@ class Client
         }
 
         return $ids;
+    }
+
+    public function pushBatch($jobs = [], $queue = self::QUEUE, )
+    {
+        
     }
 
     /**

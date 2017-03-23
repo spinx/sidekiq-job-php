@@ -27,6 +27,18 @@ class IdGeneratorSpec extends ObjectBehavior
         $this->generate()->shouldBeAlphanumeric();
     }
 
+    function it_should_be_url_safe(){
+        $this->generate()->shouldBeURLSafe();
+    }
+
+    function it_generates_correct_ten_byte_id(){
+        $this->beConstructedWith(10);
+        $this->generate()->shouldBeString();
+        $this->generate()->shouldbeOfLengh(20);
+        $this->generate()->shouldBeAlphanumeric();
+        $this->generate()->shouldBeURLSafe();
+    }
+
     /**
      * Naive way of testing uniqueness, I know
      */
@@ -50,6 +62,9 @@ class IdGeneratorSpec extends ObjectBehavior
             },
             'beAlphanumeric' => function ($subject) {
                 return ctype_alnum($subject);
+            },
+            'beURLSafe' => function($subject){
+                return ($subject === urlencode($subject));
             }
         ];
     }
