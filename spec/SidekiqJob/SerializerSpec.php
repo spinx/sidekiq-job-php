@@ -30,7 +30,7 @@ class SerializerSpec extends ObjectBehavior
 
     function it_throws_exception_if_arguments_not_json_encodable()
     {
-        $badJobArguments       = ['bad' => "\xc3\x28"];
+        $badJobArguments = ['bad' => "\xc3\x28"];
         $jobSerializeArguments = [1, new \stdClass(), $badJobArguments, true];
 
         $this->shouldThrow(JsonEncodeException::class)->during('serialize', $jobSerializeArguments);

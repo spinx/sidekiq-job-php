@@ -23,8 +23,8 @@ class JsonEncodeException extends \Exception
     public function __construct($nonJsonEncodableData, $jsonErrorCode, $jsonErrorMessage, \Exception $previous = null)
     {
         $this->nonJsonEncodableData = $nonJsonEncodableData;
-        $this->jsonErrorCode        = $jsonErrorCode;
-        $this->jsonErrorMessage     = $jsonErrorMessage;
+        $this->jsonErrorCode = $jsonErrorCode;
+        $this->jsonErrorMessage = $jsonErrorMessage;
 
         parent::__construct(sprintf('Json encode error [%d]: %s', $jsonErrorCode, $jsonErrorMessage), 0, $previous);
     }
