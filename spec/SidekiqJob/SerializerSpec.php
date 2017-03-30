@@ -4,6 +4,7 @@ namespace spec\SidekiqJob;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use SidekiqJob\JsonEncodeException;
 
 class SerializerSpec extends ObjectBehavior
 {
@@ -25,6 +26,14 @@ class SerializerSpec extends ObjectBehavior
     function is_throws_exception_if_not_valid_arguments()
     {
         $this->serialize([], true, false)->shouldThrowExeption();
+    }
+
+    function it_throws_exception_if_arguments_not_json_encodable()
+    {
+        $badJobArguments = ['bad' => "\xc3\x28"];
+        $jobSerializeArguments = [1, new \stdClass(), $badJobArguments, true];
+
+        $this->shouldThrow(JsonEncodeException::class)->during('serialize', $jobSerializeArguments);
     }
 
     function it_returns_string(){

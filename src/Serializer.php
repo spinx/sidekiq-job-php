@@ -14,8 +14,10 @@ class Serializer
      * @param string        $jobId
      * @param object|string $class
      * @param array         $args
+     * @param bool          $retry
+     *
      * @return string
-     * @throws exception Exception
+     * @throws JsonEncodeException
      */
     public function serialize($jobId, $class, $args = [], $retry = true)
     {
@@ -30,7 +32,13 @@ class Serializer
             'retry' => $retry,
         ];
 
-        return json_encode($data);
+        $jsonEncodedData = json_encode($data);
+
+        if ($jsonEncodedData === false) {
+            throw new JsonEncodeException($data, json_last_error(), json_last_error_msg());
+        }
+
+        return $jsonEncodedData;
     }
 
     /**
