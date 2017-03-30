@@ -24,12 +24,12 @@ class Serializer
         $class = is_object($class) ? get_class($class) : $class;
 
         $data = [
-            'class'       => $class,
-            'jid'         => $jobId,
-            'created_at'  => microtime(true),
+            'class' => $class,
+            'jid' => $jobId,
+            'created_at' => microtime(true),
             'enqueued_at' => microtime(true),
-            'args'        => $args,
-            'retry'       => $retry,
+            'args' => $args,
+            'retry' => $retry,
         ];
 
         $jsonEncodedData = json_encode($data);
