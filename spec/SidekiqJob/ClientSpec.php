@@ -26,7 +26,7 @@ class ClientSpec extends ObjectBehavior
 //            ->type('queue:default')->shouldBeEqualTo('list');
     }
 
-    public function getMatchers()
+    public function getMatchers() : array
     {
         return [
             'beOfLengh' => function ($subject, $key) {

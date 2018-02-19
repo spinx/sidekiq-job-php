@@ -42,7 +42,7 @@ class IdGeneratorSpec extends ObjectBehavior
     }
 
 
-    public function getMatchers()
+    public function getMatchers() : array 
     {
         return [
             'beOfLengh' => function ($subject, $key) {
