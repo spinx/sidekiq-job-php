@@ -15,11 +15,12 @@ class Serializer
      * @param object|string $class
      * @param array         $args
      * @param bool          $retry
+     * @param string|null   $queue
      *
      * @return string
      * @throws JsonEncodeException
      */
-    public function serialize($jobId, $class, $args = [], $retry = true)
+    public function serialize($jobId, $class, $args = [], $retry = true, $queue = null)
     {
         $class = is_object($class) ? get_class($class) : $class;
 
@@ -31,6 +32,10 @@ class Serializer
             'args' => $args,
             'retry' => $retry,
         ];
+
+        if ($queue !== null) {
+            $data['queue'] = $queue;
+        }
 
         $jsonEncodedData = json_encode($data);
 

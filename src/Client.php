@@ -135,7 +135,7 @@ class Client
             throw new Exception('at argument needs to be in a unix epoch format. Use microtime(true).');
         }
 
-        $job = $this->serializer->serialize($jobId, $class, $args, $retry);
+        $job = $this->serializer->serialize($jobId, $class, $args, $retry, $queue);
 
         if ($doAt === null) {
             $this->redis->sadd($this->name('queues'), $queue);

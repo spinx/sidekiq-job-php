@@ -5,13 +5,11 @@ suites:
         namespace: SidekiqJob\
         psr4_prefix:
 
-# extensions:
-#     - PhpSpec\Extension\CodeCoverageExtension
-
-code_coverage:
+extensions:
+  LeanPHP\PhpSpec\CodeCoverage\CodeCoverageExtension:
     format:
-        - html
-        - clover
+      - clover
+      - xml
     output:
-        html: coverage
-        clover: coverage.xml
+      clover: coverage.xml
+      xml: coverage

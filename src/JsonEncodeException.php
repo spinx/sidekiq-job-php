@@ -15,7 +15,7 @@ class JsonEncodeException extends \Exception
     private $jsonErrorMessage;
 
     /**
-     * @param string          $nonJsonEncodableData
+     * @param mixed           $nonJsonEncodableData
      * @param int             $jsonErrorCode
      * @param string          $jsonErrorMessage
      * @param \Exception|null $previous
