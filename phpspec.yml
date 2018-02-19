@@ -5,8 +5,8 @@ suites:
         namespace: SidekiqJob\
         psr4_prefix:
 
-extensions:
-    - PhpSpec\Extension\CodeCoverageExtension
+# extensions:
+#     - PhpSpec\Extension\CodeCoverageExtension
 
 code_coverage:
     format:
