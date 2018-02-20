@@ -141,7 +141,7 @@ class Client
             $this->redis->sadd($this->name('queues'), $queue);
             $this->redis->lpush($this->name('queue', $queue), $job);
         } else {
-            $this->redis->zadd($this->name('schedule'), [$job => $doAt]);
+            $this->redis->zadd($this->name('schedule'), $doAt, $job);
         }
     }
 
